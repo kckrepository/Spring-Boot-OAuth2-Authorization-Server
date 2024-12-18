@@ -1,0 +1,20 @@
+server:
+  port: 9000
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          my_authorization_server:
+            issuer-uri: http://127.0.0.1:8080
+        registration:
+          my_authorization_server:
+            client-id: client
+            client-name: Custom
+            client-secret: secret
+            provider: my_authorization_server
+            client-authentication-method: client_secret_basic
+            redirect-uri: http://localhost:9000/login/oauth2/code/my_authorization_server
+            scope:
+              - openid
